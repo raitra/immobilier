@@ -1,0 +1,508 @@
+App\Entity\Menu:
+  #dashboard menu
+  menu_dashboard:
+    title: Tableau de Bord
+    routeName: /campus-flow/dashboard
+    icon: bi bi-grid
+    roleNameCrypts: []
+    isShow: true
+    parent: null
+  menu_parameter:
+    title: Paramètre
+    routeName: "#"
+    icon: bi bi-gear
+    roleNameCrypts: []
+    isShow: true
+    parent: null
+  menu_role:
+    title: Rôles
+    routeName: /campus-flow/user-role
+    roleNameCrypts: []
+    isShow: true
+    parent: "@menu_parameter"
+  menu_role_new:
+    title: Ajouter
+    routeName: /campus-flow/user-role/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_role"
+  menu_role_show:
+    title: Voir
+    routeName: /campus-flow/user-role/:id
+    roleNameCrypts: [ ]
+    isShow: false
+    parent: "@menu_role"
+  menu_role_edit:
+    title: Modifier
+    routeName: /campus-flow/user-role/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_role"
+  menu_role_delete:
+    title: Supprimer
+    routeName: /campus-flow/user-role/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_role"
+  menu_user:
+    title: Utilisateurs
+    routeName: /campus-flow/users
+    roleNameCrypts: [ ]
+    isShow: true
+    parent: "@menu_parameter"
+  menu_user_new:
+    title: Ajouter
+    routeName: /campus-flow/users/add
+    roleNameCrypts: [ ]
+    isShow: false
+    parent: "@menu_user"
+  menu_user_show:
+    title: Voir
+    routeName: /campus-flow/users/:id
+    roleNameCrypts: [ ]
+    isShow: false
+    parent: "@menu_user"
+  menu_user_edit:
+    title: Modifier
+    routeName: /campus-flow/users/edit/:id
+    roleNameCrypts: [ ]
+    isShow: false
+    parent: "@menu_user"
+  menu_user_delete:
+    title: Supprimer
+    routeName: /campus-flow/users/delete/:id
+    roleNameCrypts: [ ]
+    isShow: false
+    parent: "@menu_user"
+  #another menu
+  menu_basic_data:
+    title: Donnée de base
+    routeName: "#"
+    roleNameCrypts: []
+    isShow: true
+    parent: "@menu_parameter"
+  menu_center:
+    title: Centre
+    routeName: /campus-flow/center
+    roleNameCrypts: []
+    isShow: true
+    parent: "@menu_basic_data"
+  menu_center_new:
+    title: Ajouter
+    routeName: /campus-flow/center/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_center"
+  menu_center_show:
+    title: Voir
+    routeName: /campus-flow/center/:id
+    roleNameCrypts: [ ]
+    isShow: false
+    parent: "@menu_center"
+  menu_center_edit:
+    title: Modifier
+    routeName: /campus-flow/center/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_center"
+  menu_center_delete:
+    title: Supprimer
+    routeName: /campus-flow/center/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_center"
+  menu_school_type:
+    title: Type d'établissement
+    routeName: /campus-flow/school-type
+    roleNameCrypts: []
+    isShow: true
+    parent: "@menu_basic_data"
+  menu_school_type_new:
+    title: Ajouter
+    routeName: /campus-flow/school-type/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_school_type"
+  menu_school_type_show:
+    title: Voir
+    routeName: /campus-flow/scholl-type/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_school_type"
+  menu_school_type_edit:
+    title: Modifier
+    routeName: /campus-flow/school-type/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_school_type"
+  menu_school_type_delete:
+    title: Supprimer
+    routeName: /campus-flow/scholl-type/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_school_type"
+  menu_school_year:
+    title: Année scolaire
+    routeName: /campus-flow/school-year
+    roleNameCrypts: []
+    isShow: true
+    parent: "@menu_basic_data"
+  menu_school_year_new:
+    title: Ajouter
+    routeName: /campus-flow/school-year/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_school_year"
+  menu_school_year_show:
+    title: Voir
+    routeName: /campus-flow/school-year/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_school_year"
+  menu_school_year_edit:
+    title: Modifier
+    routeName: /campus-flow/school-year/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_school_year"
+  menu_school_year_delete:
+    title: Supprimer
+    routeName: /campus-flow/school-year/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_school_year"
+  menu_exam:
+    title: Examen
+    routeName: /campus-flow/exam
+    roleNameCrypts: []
+    isShow: true
+    parent: "@menu_basic_data"
+  menu_exam_new:
+    title: Ajouter
+    routeName: /campus-flow/exam/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_exam"
+  menu_exam_show:
+    title: Voir
+    routeName: /campus-flow/exam/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_exam"
+  menu_exam_edit:
+    title: Modifier
+    routeName: /campus-flow/exam/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_exam"
+  menu_exam_delete:
+    title: Supprimer
+    routeName: /campus-flow/exam/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_exam"
+  
+  #---------------------------------------------
+  #----------------------------------------------
+  menu_classroom:
+    title: Salle de classe
+    routeName: /campus-flow/classroom
+    icon: bi bi-border-outer
+    roleNameCrypts: [ ]
+    isShow: true
+    parent: null
+  menu_classroom_new:
+    title: Ajouter
+    routeName: /campus-flow/classroom/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_classroom"
+  menu_classroom_show:
+    title: Voir
+    routeName: /campus-flow/classroom/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_classroom"
+  menu_classroom_edit:
+    title: Modifier
+    routeName: /campus-flow/classroom/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_classroom"
+  menu_classroom_delete:
+    title: Supprimer
+    routeName: /campus-flow/classroom/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_classroom"
+  menu_classroom_timetables:
+    title: Emploi du temps classe
+    routeName: /campus-flow/classroom/timetables
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_classroom"
+  menu_classroom_students:
+    title: Elève classe
+    routeName: /campus-flow/classroom/students
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_classroom"
+  #---------------------------------------------
+  #----------------------------------------------
+  menu_subject:
+    title: Matière
+    routeName: /campus-flow/subject
+    icon: bi bi-journals
+    roleNameCrypts: []
+    isShow: true
+    parent: null
+  menu_subject_new:
+    title: Ajouter
+    routeName: /campus-flow/subject/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_subject"
+  menu_subject_show:
+    title: Voir
+    routeName: /campus-flow/subject/:id
+    roleNameCrypts: [ ]
+    isShow: false
+    parent: "@menu_subject"
+  menu_subject_edit:
+    title: Modifier
+    routeName: /campus-flow/subject/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_subject"
+  menu_subject_delete:
+    title: Supprimer
+    routeName: /campus-flow/subject/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_subject"  
+#---------------------------------------------
+#----------------------------------------------
+  menu_timetable:
+    title: Emploi du temps
+    routeName: /campus-flow/timetable
+    icon: bi bi-kanban
+    roleNameCrypts: [ ]
+    isShow: true
+    parent: null
+  menu_timetable_new:
+    title: Ajouter
+    routeName: /campus-flow/timetable/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_timetable"
+  menu_timetable_show:
+    title: Voir
+    routeName: /campus-flow/timetable/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_timetable"
+  menu_timetable_edit:
+    title: Modifier
+    routeName: /campus-flow/timatable/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_timetable"
+  menu_timetable_delete:
+    title: Supprimer
+    routeName: /campus-flow/timetable/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_timetable"
+  #---------------------------------------------
+  #----------------------------------------------
+  menu_teacher:
+    title: Enseignant
+    routeName: /campus-flow/teacher
+    icon: bi bi-person-video3
+    roleNameCrypts: []
+    isShow: true
+    parent: null
+  menu_teacher_new:
+    title: Ajouter
+    routeName: /campus-flow/teacher/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_teacher"
+  menu_teacher_show:
+    title: Voir
+    routeName: /campus-flow/teacher/:id
+    roleNameCrypts: [ ]
+    isShow: false
+    parent: "@menu_teacher"
+  menu_teacher_edit:
+    title: Modifier
+    routeName: /campus-flow/teacher/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_teacher"
+  menu_teacher_delete:
+    title: Supprimer
+    routeName: /campus-flow/teacher/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_teacher"  
+  menu_teacher_subjects:
+    title: Matière de l'enseignant
+    routeName: /campus-flow/teacher/subjects
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_teacher"
+  #---------------------------------------------
+  #----------------------------------------------
+  menu_student:
+    title: Elève
+    routeName: /campus-flow/student
+    icon: bi bi-mortarboard
+    roleNameCrypts: []
+    isShow: true
+    parent: null
+  menu_student_new:
+    title: Ajouter
+    routeName: /campus-flow/student/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_student"
+  menu_student_show:
+    title: Voir
+    routeName: /campus-flow/student/:id
+    roleNameCrypts: [ ]
+    isShow: false
+    parent: "@menu_student"
+  menu_student_edit:
+    title: Modifier
+    routeName: /campus-flow/student/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_student"
+  menu_student_delete:
+    title: Supprimer
+    routeName: /campus-flow/student/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_student" 
+  menu_student_scores:
+    title: Notes élève
+    routeName: /campus-flow/student/scores
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_student" 
+  menu_student_absences:
+    title: Abscences élève
+    routeName: /campus-flow/student/absences
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_student" 
+  menu_student_fees:
+    title: Frais de scolarité élève
+    routeName: /campus-flow/student/fees
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_student" 
+  #---------------------------------------------
+  #----------------------------------------------
+  menu_score:
+    title: Note
+    routeName: /campus-flow/score
+    icon: bi bi-ui-checks
+    roleNameCrypts: []
+    isShow: true
+    parent: null
+  menu_score_new:
+    title: Ajouter
+    routeName: /campus-flow/score/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_score"
+  menu_score_show:
+    title: Voir
+    routeName: /campus-flow/score/:id
+    roleNameCrypts: [ ]
+    isShow: false
+    parent: "@menu_score"
+  menu_score_edit:
+    title: Modifier
+    routeName: /campus-flow/score/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_score"
+  menu_score_delete:
+    title: Supprimer
+    routeName: /campus-flow/score/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_score"  
+  #---------------------------------------------
+  #----------------------------------------------
+  menu_abscence:
+    title: Abscence
+    routeName: /campus-flow/absence
+    icon: bi bi-person-x
+    roleNameCrypts: [ ]
+    isShow: true
+    parent: null
+  menu_abscence_new:
+    title: Ajouter
+    routeName: /campus-flow/absence/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_abscence"
+  menu_abscence_show:
+    title: Voir
+    routeName: /campus-flow/absence/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_abscence"
+  menu_abscence_edit:
+    title: Modifier
+    routeName: /campus-flow/absence/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_abscence"
+  menu_abscence_delete:
+    title: Supprimer
+    routeName: /campus-flow/absence/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_abscence"
+  #---------------------------------------------
+  #----------------------------------------------
+  menu_school_fees:
+    title: Frais de scolarité
+    routeName: /campus-flow/school-fees
+    icon: bi bi-coin
+    roleNameCrypts: [ ]
+    isShow: true
+    parent: null
+  menu_school_fees_new:
+    title: Ajouter
+    routeName: /campus-flow/school-fees/add
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_school_fees"
+  menu_school_fees_show:
+    title: Voir
+    routeName: /campus-flow/school-fees/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_school_fees"
+  menu_school_fees_edit:
+    title: Modifier
+    routeName: /campus-flow/school-fees/edit/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_school_fees"
+  menu_school_fees_delete:
+    title: Supprimer
+    routeName: /campus-flow/school-fees/delete/:id
+    roleNameCrypts: []
+    isShow: false
+    parent: "@menu_school_fees"
+  
+  
+
+

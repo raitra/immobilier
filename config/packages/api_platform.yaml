@@ -1,0 +1,27 @@
+api_platform:
+    title: Campus Flow API Platform
+    version: 1.0.0
+    formats:
+        jsonld: ['application/ld+json', 'application/json', 'text/html', 'multipart/form-data']
+    docs_formats:
+        jsonld: ['application/ld+json']
+        jsonopenapi: ['application/vnd.openapi+json']
+        html: ['text/html']
+    defaults:
+        stateless: false
+        cache_headers:
+            vary: ['Content-Type', 'Authorization', 'Origin']
+        extra_properties:
+            standard_put: true
+            rfc_7807_compliant_errors: true
+        pagination_items_per_page: 15
+        order: 
+            id: 'DESC'  # Tri global par l'ID dans l'ordre décroissant
+            
+    
+    event_listeners_backward_compatibility_layer: false
+    keep_legacy_inflector: false
+    
+    enable_swagger_ui: false
+    enable_re_doc: false
+    show_webby: false

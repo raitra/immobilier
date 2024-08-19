@@ -1,0 +1,3 @@
+# api_logement:
+#   resource: ../src/Controller/LogementController.php
+#   type: annotation

@@ -1,0 +1,6 @@
+App\Entity\UserRole:
+  user_{1..100}:
+        title: '<name()>'
+        description: '<name()>'
+        nameCrypt: '<uniqid()>'
+        createdAt: '<dateTimeBetween("-200 days", "now")>'
