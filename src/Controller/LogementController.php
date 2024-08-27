@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('api')]
 class LogementController extends AbstractController{
 
     public function __construct
@@ -21,11 +20,15 @@ class LogementController extends AbstractController{
         
     }
 
-    #[Route('/log', name:'app_logement_list', methods:['GET'])]
+    #[Route('/', name:'app_logement_list', methods:['GET'])]
     public function index():Response
     {
+        $name = 'Raitra';
         $dataLogement = $this->em->getRepository(Logement::class)->findAll();
-        return $this->json($dataLogement);
+        return $this->render('logement/index.html.twig',[
+            'logements' => $dataLogement,
+            'name' => $name
+        ]);
     }
 
     #[Route('/log-insert', name:'app_logement_insert', methods:['POST'])]

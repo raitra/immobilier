@@ -3,12 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Commune;
+use App\Form\CommuneType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/api')]
 class CommuneController extends AbstractController
 {
 
@@ -24,17 +25,34 @@ class CommuneController extends AbstractController
     public function index(): Response
     {
         $communes = $this->em->getRepository(Commune::class)->findAll();
-        if(count($communes)>0){
+            return $this->render('commune/index.html.twig', [
+                'communes' => $communes 
+            ]);
+    }
 
-            return $this->json([
-                'status' => 200,
-                'communes' => $communes
-            ],200);
+    #[Route('/insertCommune', name:'app_commune_insert', methods:['GET','POST'])]
+    public function insert(Request $request): Response 
+    {
+        $commune = new Commune();
+        $form = $this->createForm(CommuneType::class, $commune);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $this->em->persist($commune);
+            $this->em->flush();
+
+            $this->addFlash('success', 'Commune Ajouter');
+            return $this->redirectToRoute('app_commune');
         }else{
-            return $this->json([
-                'status' => 400,
-                'communes' => 'Il n\'y a pas aucune communes'
-            ],200);
+            $this->addFlash('error', 'Commune not Add');
+            return $this->redirectToRoute('app_commune_insert');
         }
+        return $this->render('commune/insertCommune.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    public function deleteCommune()
+    {
+        
     }
 }
