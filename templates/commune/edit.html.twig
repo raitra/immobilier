@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %} {% endblock %}</title>
+        {% block stylesheets %}
+            
+        {% endblock %}
+
+        {% block javascript %}
+            
+        {% endblock %}
+
+    </head>
+    <body>
+        {% block body %}            
+            {% apply upper %}
+                Update Commune
+            {% endapply %}
+            
+            <div class="form">
+                <div class="form-group">
+                    {{form_start(form)}}
+                        {{form_widget(form)}}
+                    {{form_end(form)}}
+                </div>
+            </div>
+        {% endblock %}
+    </body>
+</html>

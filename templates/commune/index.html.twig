@@ -1,30 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %} {% endblock %}</title>
-        {% block stylesheets %}
-            
+        {% extends 'base.html.twig' %}
+        {% block title %}
+            Mes communes
         {% endblock %}
+        {% block body %}
 
-        {% block javascript %}
-            
-        {% endblock %}
-
-    </head>
-    <body>
-        {% block body %}            
+        <div class="container">
             {% apply upper %}
                 Commune
             {% endapply %}
 
+            <div class="end">
+                <a class="btn btn-primary" href={{path('app_commune_insert')}}>Insert</a>
+            </div>
             <div class="table table-responsive">
-                <table border="1">
+                <table class="table table-bordered">
                     <thead>
-                        <tr>
-                            <td>Nom du commune</td>
-                            <td>Distance de l'agence</td>
-                            <td>Nombre d'habitant</td>
+                        <tr scope="col">
+                            <td scope="col">Nom du commune</td>
+                            <td scope="col">Distance de l'agence</td>
+                            <td scope="col">Nombre d'habitant</td>
+                            <td scope="col">Action</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,14 +27,19 @@
                         <tr>
                                 <td>{{ commune.nomCommune }}</td>                                    
                                 <td>{{ commune.distanceAgence }}</td>                                    
-                                <td>{{ commune.nombreHabitant }}</td>                                    
+                                <td>{{ commune.nombreHabitant }}</td>
+                                <td>
+                                    {# <input type="hidden" name="_token" value="{{ csrf_token('delete_commune' ~ commune.id) }}"> #}
+                                    <a class="btn btn-secondary" href={{  path('app_commune_delete', {'id': commune.id})  }}>Delete</a>
+                                    <a class="btn btn-danger" href={{  path('app_commune_edit', {'id': commune.id})  }}>Edit</a>
+                                </td>                                    
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
+        </div>            
 
             
         {% endblock %}
-    </body>
-</html>
+   

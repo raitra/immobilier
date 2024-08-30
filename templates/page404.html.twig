@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %} {% endblock %}</title>
+        {% block stylesheets %}
+            
+        {% endblock %}
+
+        {% block javascript %}
+            
+        {% endblock %}
+
+    </head>
+    <body>
+        {% block body %}            
+            {% apply upper %}
+                Page 404
+            {% endapply %}
+        {% endblock %}
+    </body>
+</html>

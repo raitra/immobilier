@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Commune;
 use App\Form\CommuneType;
+use App\Repository\CommuneRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,8 +52,48 @@ class CommuneController extends AbstractController
         ]);
     }
 
-    public function deleteCommune()
+    #[Route('/{id}/communeDelete', name:'app_commune_delete', methods:['GET','POST'])]
+    public function deleteCommune(Request $request, Commune $commune,CommuneRepository $communeRepository):Response
     {
-        
+        //if($this->isCsrfTokenValid('delete_commune'.$commune->getId(), $request->request->get('__token'))){
+            $communeRepository->remove($commune, true);
+            $this->addFlash('success', 'Commune Supprimer');
+        //}
+        return $this->redirectToRoute('app_commune');
+
+    }
+
+    #[Route('/{id}/show', name:'app_commune_one', methods:['GET'])]
+    public function showOne($id):Response
+    {
+        $entity = $this->em->getRepository(Commune::class)->findOneBy(['id' => $id]);
+        if(!$entity){
+            return $this->render('page404.html.twig');
+        }else{
+            return $this->render('commune/show.html.twig', [
+                'commune' => $entity
+            ]);       
+        }
+    }
+
+    #[Route('/{id}/edit', name:'app_commune_edit', methods:['GET', 'POST'])]
+    public function editCommune(Request $request, Commune $commune)
+    {
+        $entity = $this->em->getRepository(Commune::class)->findOneBy(['id' => $commune]);
+        $form = $this->createForm(CommuneType::class, $commune);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $this->em->persist($commune);
+            $this->em->flush();
+
+            $this->addFlash('success', 'Commune Modifier');
+            return $this->redirectToRoute('app_commune');
+        }
+        //     $this->addFlash('error', 'Commune not update');
+        //     return $this->redirectToRoute('app_commune_edit');
+        // }
+        return $this->render('commune/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }

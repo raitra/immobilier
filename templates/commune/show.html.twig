@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %} {% endblock %}</title>
+        {% block stylesheets %}
+            
+        {% endblock %}
+
+        {% block javascript %}
+            
+        {% endblock %}
+
+    </head>
+    <body>
+        {% block body %}            
+            {% apply upper %}
+                Information
+            {% endapply %}
+            
+            <div class="form">
+                <div class="form-group">
+                    <div class="form-control">
+                        <label>Nom:</label>
+                        <p><em>{{commune.nomCommune}}</em></p>
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                <div class="form-group">
+                    <div class="form-control">
+                        <label>Distance</label>
+                        <p><em>{{commune.distanceAgence}}</em></p>
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                <div class="form-group">
+                    <div class="form-control">
+                        <label>Habitant:</label>
+                        <p><em>{{commune.nombreHabitant}}</em></p>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </body>
+</html>

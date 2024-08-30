@@ -45,4 +45,12 @@ class CommuneRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+        public function remove(Commune $entity, bool $flush = false):void
+        {
+            $this->getEntityManager()->remove($entity);
+            if($flush){
+                $this->getEntityManager()->flush();
+            }
+        }
 }
