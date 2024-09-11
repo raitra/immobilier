@@ -1,38 +1,36 @@
-        {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
         {% block title %}
-            Mes communes
+            Mes quartiers
         {% endblock %}
         {% block body %}
         
 
         <div class="container">
             {% apply upper %}
-                Commune
+                Quartiers
             {% endapply %}
 
             <div class="end">
-                <a class="btn btn-primary" href={{path('app_commune_insert')}}>Insert</a>
+                <a class="btn btn-primary" href={{path('app_insert_quartier')}}>Insert</a>
             </div>
             <div class="table table-responsive">
                 <table class="table table-bordered">
                     <thead>
                         <tr scope="col">
                             <td scope="col">Nom du commune</td>
-                            <td scope="col">Distance de l'agence</td>
-                            <td scope="col">Nombre d'habitant</td>
+                            <td scope="col">Quartier de</td>
                             <td scope="col">Action</td>
                         </tr>
                     </thead>
                     <tbody>
-                    {% for commune in communes %}
+                    {% for quartier in quartiers %}
                         <tr>
-                                <td>{{ commune.nomCommune }}</td>                                    
-                                <td>{{ commune.distanceAgence }}</td>                                    
-                                <td>{{ commune.nombreHabitant }}</td>
+                                <td>{{ quartier.commune.nomCommune }}</td>                                    
+                                <td>{{ quartier.libelleQuartier }}</td>                                    
                                 <td>
                                     {# <input type="hidden" name="_token" value="{{ csrf_token('delete_commune' ~ commune.id) }}"> #}
-                                    <a class="btn btn-secondary" href={{  path('app_commune_delete', {'id': commune.id})  }}>Delete</a>
-                                    <a class="btn btn-danger" href={{  path('app_commune_edit', {'id': commune.id})  }}>Edit</a>
+                                    <a class="btn btn-secondary" href={{path('app_delete_quartier', {'id': quartier.id})}}>Delete</a>
+                                    <a class="btn btn-danger" href={{path('app_edit_quartier', {'id': quartier.id})}}>Edit</a>
                                 </td>                                    
                         </tr>
                     {% endfor %}
@@ -43,4 +41,3 @@
 
             
         {% endblock %}
-   

@@ -43,17 +43,14 @@ class CommuneController extends AbstractController
 
             $this->addFlash('success', 'Commune Ajouter');
             return $this->redirectToRoute('app_commune');
-        }else{
-            $this->addFlash('error', 'Commune not Add');
-            return $this->redirectToRoute('app_commune_insert');
-        }
+         }
         return $this->render('commune/insertCommune.html.twig', [
             'form' => $form->createView()
         ]);
     }
 
     #[Route('/{id}/communeDelete', name:'app_commune_delete', methods:['GET','POST'])]
-    public function deleteCommune(Request $request, Commune $commune,CommuneRepository $communeRepository):Response
+    public function deleteCommune(Commune $commune,CommuneRepository $communeRepository):Response
     {
         //if($this->isCsrfTokenValid('delete_commune'.$commune->getId(), $request->request->get('__token'))){
             $communeRepository->remove($commune, true);
@@ -79,8 +76,7 @@ class CommuneController extends AbstractController
     #[Route('/{id}/edit', name:'app_commune_edit', methods:['GET', 'POST'])]
     public function editCommune(Request $request, Commune $commune)
     {
-        $entity = $this->em->getRepository(Commune::class)->findOneBy(['id' => $commune]);
-        $form = $this->createForm(CommuneType::class, $commune);
+        $form = $this->createForm(CommuneType::class, $commune, ['is_edit'=> true]);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $this->em->persist($commune);

@@ -21,6 +21,14 @@ class QuartierRepository extends ServiceEntityRepository
         parent::__construct($registry, Quartier::class);
     }
 
+    public function remove(Quartier $entity, bool $flush = false):void
+        {
+            $this->getEntityManager()->remove($entity);
+            if($flush){
+                $this->getEntityManager()->flush();
+            }
+    }
+
 //    /**
 //     * @return Quartier[] Returns an array of Quartier objects
 //     */

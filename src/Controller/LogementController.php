@@ -20,7 +20,7 @@ class LogementController extends AbstractController{
         
     }
 
-    #[Route('/', name:'app_logement_list', methods:['GET'])]
+    #[Route('/logement', name:'app_logement_list', methods:['GET'])]
     public function index():Response
     {
         $name = 'Raitra';

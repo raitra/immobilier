@@ -13,15 +13,16 @@
     </head>
     <body>
         {% block body %}            
+            <div class="container">
             {% apply upper %}
                 Update Commune
-            {% endapply %}
-            
-            <div class="form">
-                <div class="form-group">
-                    {{form_start(form)}}
-                        {{form_widget(form)}}
-                    {{form_end(form)}}
+            {% endapply %}            
+                <div class="form">
+                    <div class="form-group">
+                        {{form_start(form)}}
+                            {{form_widget(form)}}
+                        {{form_end(form)}}
+                    </div>
                 </div>
             </div>
         {% endblock %}

@@ -1,29 +1,19 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %} {% endblock %}</title>
-        {% block stylesheets %}
-            
-        {% endblock %}
+        {% extends 'base.html.twig' %}
+        {% block title %}Insert Commune {% endblock %}
 
-        {% block javascript %}
-            
-        {% endblock %}
-
-    </head>
-    <body>
         {% block body %}            
-            {% apply upper %}
-                Insert Commune
-            {% endapply %}
             
-            <div class="form">
-                <div class="form-group">
-                    {{form_start(form)}}
-                        {{form_widget(form)}}
-                    {{form_end(form)}}
+            <div class="container">
+            {# {% apply upper %} #}
+                <h1 class="mt-3" style="color:#8a9e00;">Insert Commune</h1>
+            {# {% endapply %}             #}
+                <div class="form">
+                    <div class="form-group">
+                        {{form_start(form)}}
+                            {{form_widget(form)}}
+                        {{form_end(form)}}
+                    </div>
                 </div>
             </div>
         {% endblock %}
-    </body>
-</html>
+    
