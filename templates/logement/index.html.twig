@@ -1,23 +1,50 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %} {% endblock %}</title>
-        {% block stylesheets %}
-            
+{% extends 'base.html.twig' %}
+        {% block title %}
+            Les logements
         {% endblock %}
+        {% block body %}
+        
 
-        {% block javascript %}
-            
-        {% endblock %}
-
-    </head>
-    <body>
-        {% block body %}            
+        <div class="container">
             {% apply upper %}
-                Page
+               Logements
             {% endapply %}
-            <p>My name is {{ name }}, I have {{ random(20, 30) }} years old.</p>
+
+            <div class="text-end">
+                <a class="btn btn-secondary" href={{path('app_insert_logement')}}>Insert</a>
+            </div>
+            <div class="table table-responsive mt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr scope="col">
+                            <td scope="col">Lot</td>
+                            <td scope="col">Rue</td>
+                            <td scope="col">Superficie</td>
+                            <td scope="col">Loyer</td>
+                            <td scope="col">Type de logement</td>
+                            <td scope="col">Quartier</td>
+                            <td scope="col">Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for logement in logements %}
+                        <tr>
+                                <td>{{ logement.lot }}</td>                                    
+                                <td>{{ logement.rue }}</td>                                    
+                                <td>{{ logement.superficie }}</td>                                    
+                                <td>{{ logement.loyer }}</td>                                    
+                                <td>{{ logement.typeLog.type }}</td>                                    
+                                <td>{{ logement.quartier.libelleQuartier }}</td>                                    
+                                <td>
+                                    <a class="btn btn-danger" href={{path('app_logement_delete', {'id': logement.id})}}>Delete</a>
+                                    <a class="btn btn-success" href={{path('app_logement_update', {'id': logement.id})}}>Edit</a>
+                                </td>                                    
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>            
+
+            
         {% endblock %}
-    </body>
-</html>

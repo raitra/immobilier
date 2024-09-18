@@ -147,4 +147,5 @@ class Logement
 
         return $this;
     }
+
 }

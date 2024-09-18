@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+        {% block title %}
+            Les personnes
+        {% endblock %}
+        {% block body %}
+        
+
+        <div class="container">
+            {% apply upper %}
+               Listes des personnes
+            {% endapply %}
+
+            <div class="text-end">
+                <a class="btn btn-secondary" href={{path('app_insert_individu')}}>Insert</a>
+            </div>
+            <div class="table table-responsive mt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr scope="col">
+                            <td scope="col">Logement</td>
+                            <td scope="col">Nom</td>
+                            <td scope="col">Prenom</td>
+                            <td scope="col">Date de naissance</td>
+                            <td scope="col">Telephone</td>
+                            <td scope="col">Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for individu in individus %}
+                        <tr>
+                                <td>{{ individu.logement.lot }}</td>                                    
+                                <td>{{ individu.nom }}</td>                                    
+                                <td>{{ individu.prenom }}</td>                                                                        
+                                <td>{{ individu.datenais|date('d/m/Y') }}</td>                                                                        
+                                <td>{{ individu.phone }}</td>                                                                        
+                                <td>
+                                    <a class="btn btn-danger" href={{path('app_logement_delete', {'id': individu.id})}}>Delete</a>
+                                    <a class="btn btn-success" href={{path('app_individu_update', {'id': individu.id})}}>Edit</a>
+                                </td>                                    
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>            
+
+            
+        {% endblock %}

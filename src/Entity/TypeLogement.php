@@ -21,9 +21,16 @@ class TypeLogement
     #[ORM\OneToMany(mappedBy: 'typeLog', targetEntity: Logement::class)]
     private Collection $logements;
 
+    #[ORM\Column(length: 255)]
+    private ?string $type = null;
+
+    #[ORM\OneToMany(mappedBy: 'Logement', targetEntity: Logement::class)]
+    private Collection $typeLogement;
+
     public function __construct()
     {
         $this->logements = new ArrayCollection();
+        $this->typeLogement = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -72,4 +79,25 @@ class TypeLogement
 
         return $this;
     }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): static
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Logement>
+     */
+    public function getTypeLogement(): Collection
+    {
+        return $this->typeLogement;
+    }
+
 }

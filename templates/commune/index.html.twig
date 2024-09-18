@@ -10,10 +10,10 @@
                 Commune
             {% endapply %}
 
-            <div class="end">
+            <div class="text-end">
                 <a class="btn btn-primary" href={{path('app_commune_insert')}}>Insert</a>
             </div>
-            <div class="table table-responsive">
+            <div class="table table-responsive mt-3">
                 <table class="table table-bordered">
                     <thead>
                         <tr scope="col">
@@ -31,8 +31,8 @@
                                 <td>{{ commune.nombreHabitant }}</td>
                                 <td>
                                     {# <input type="hidden" name="_token" value="{{ csrf_token('delete_commune' ~ commune.id) }}"> #}
-                                    <a class="btn btn-secondary" href={{  path('app_commune_delete', {'id': commune.id})  }}>Delete</a>
-                                    <a class="btn btn-danger" href={{  path('app_commune_edit', {'id': commune.id})  }}>Edit</a>
+                                    <a class="btn btn-danger" href={{  path('app_commune_delete', {'id': commune.id})  }}>Delete</a>
+                                    <a class="btn btn-secondary" href={{  path('app_commune_edit', {'id': commune.id})  }}>Edit</a>
                                 </td>                                    
                         </tr>
                     {% endfor %}

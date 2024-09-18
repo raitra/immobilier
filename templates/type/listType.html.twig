@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+        {% block title %}
+            Mes types de logement
+        {% endblock %}
+        {% block body %}
+        
+
+        <div class="container">
+            {% apply upper %}
+                Types de logement
+            {% endapply %}
+
+            <div class="text-end">
+                <a class="btn btn-secondary" href={{path('app_insert_type_logement')}}>Insert</a>
+            </div>
+            <div class="table table-responsive mt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr scope="col">
+                            <td scope="col">Type de logement</td>
+                            <td scope="col">Charge</td>
+                            <td scope="col">Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for type in types %}
+                        <tr>
+                                <td>{{ type.type }}</td>                                    
+                                <td>{{ type.charges }}</td>                                    
+                                <td>
+                                    <a class="btn btn-danger" href={{path('app_delete_type_logement', {'id': type.id})}}>Delete</a>
+                                    <a class="btn btn-success" href={{path('app_edit_type_logement', {'id': type.id})}}>Edit</a>
+                                </td>                                    
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>            
+
+            
+        {% endblock %}

@@ -21,6 +21,14 @@ class TypeLogementRepository extends ServiceEntityRepository
         parent::__construct($registry, TypeLogement::class);
     }
 
+    public function remove(TypeLogement $entity, bool $flush = false):void
+    {
+            $this->getEntityManager()->remove($entity);
+            if($flush){
+                $this->getEntityManager()->flush();
+            }
+    }
+
 //    /**
 //     * @return TypeLogement[] Returns an array of TypeLogement objects
 //     */

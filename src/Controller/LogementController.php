@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Logement;
+use App\Form\LogementType;
 use App\Repository\LogementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,36 +24,27 @@ class LogementController extends AbstractController{
     #[Route('/logement', name:'app_logement_list', methods:['GET'])]
     public function index():Response
     {
-        $name = 'Raitra';
-        $dataLogement = $this->em->getRepository(Logement::class)->findAll();
+        $logements = $this->em->getRepository(Logement::class)->findAll();
         return $this->render('logement/index.html.twig',[
-            'logements' => $dataLogement,
-            'name' => $name
+            'logements' => $logements,
         ]);
     }
 
-    #[Route('/log-insert', name:'app_logement_insert', methods:['POST'])]
-    public function insert(Request $request ):Response
+    #[Route('/insertLogement', name:'app_insert_logement', methods:['GET', 'POST'])]
+    public function insertLog(Request $request):Response
     {
-        $data = json_decode($request->getContent(),true);
         $logement = new Logement();
-        $logement->setLot($data['lot']);
-        $logement->setLoyer($data['loyer']);
-        $logement->setSuperficie($data['superficie']);
-        $logement->setRue($data['rue']);
-        $this->em->persist($logement);       
-        $this->em->flush();
-        if($logement){
-            return $this->json([
-                'status' => 202,
-                'Logements' => $logement
-            ],202);
-        }else{
-            return $this->json([
-                'status' => 404,
-                'Error' => 'No data'
-            ],404);
+        $form = $this->createForm(LogementType::class, $logement);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $this->em->persist($logement);
+            $this->em->flush();
+            $this->addFlash('success', 'Logement Ajouter');
+            return $this->redirectToRoute('app_logement_list');
         }
+        return $this->render('logement/logInsert.html.twig',[
+            'form' => $form
+        ]);
     }
 
     #[Route('/log/{id}', name: 'app_logement_find_by_id', methods:['GET'])]
@@ -64,30 +56,26 @@ class LogementController extends AbstractController{
     #[Route('/logUpdate/{id}', name:'app_logement_update', methods:['GET', 'POST'])]
     public function update(Request $request, Logement $logement):Response
     {
-        $data = json_decode($request->getContent(),true);
-        $logement->setLot($data['lot']);
-        $logement->setLoyer($data['loyer']);
-        $logement->setSuperficie($data['superficie']);
-        $logement->setRue($data['rue']);
-        $this->em->persist($logement);       
-        $this->em->flush();
-        if($logement){
-            return $this->json([
-                'status' => 202,
-                'Logements' => $logement
-            ],202);
-        }else{
-            return $this->json([
-                'status' => 404,
-                'Error' => 'No data'
-            ],404);
+        $form = $this->createForm(LogementType::class, $logement, ['is_edit' => true]);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $this->em->persist($logement);
+            $this->em->flush();
+            $this->addFlash('success', 'logement Modifier');
+            return $this->redirectToRoute('app_list_logement');
         }
+        return $this->render('logement/editLogement.html.twig',[
+            'form' => $form
+        ]);
     }
 
-    #[Route('/logDelete/{id}', name: 'app_logement_delete', methods:['POST'])]
-    public function deleteLog(LogementRepository $logementRepository, Logement $logement):Response
+
+
+    #[Route('/logDelete/{id}', name: 'app_logement_delete', methods:['GET'])]
+    public function deleteQuartier(Logement $logement, LogementRepository $logementRepository):Response
     {
-        $logementRepository->remove($logement,true);
-        return new Response('Delete Success', Response::HTTP_NO_CONTENT);
+        $logementRepository->remove($logement, true);
+        $this->addFlash('success',  'Logement Supprimer');
+        return $this->redirectToRoute('app_logement_list');
     }
 }

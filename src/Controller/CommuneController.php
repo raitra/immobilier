@@ -22,7 +22,7 @@ class CommuneController extends AbstractController
         
     }
 
-    #[Route('/commune', name: 'app_commune', methods:['GET'])]
+    #[Route('/', name: 'app_commune', methods:['GET'])]
     public function index(): Response
     {
         $communes = $this->em->getRepository(Commune::class)->findAll();

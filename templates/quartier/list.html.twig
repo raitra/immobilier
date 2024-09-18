@@ -10,10 +10,10 @@
                 Quartiers
             {% endapply %}
 
-            <div class="end">
+            <div class="text-end">
                 <a class="btn btn-primary" href={{path('app_insert_quartier')}}>Insert</a>
             </div>
-            <div class="table table-responsive">
+            <div class="table table-responsive mt-3">
                 <table class="table table-bordered">
                     <thead>
                         <tr scope="col">
@@ -29,8 +29,8 @@
                                 <td>{{ quartier.libelleQuartier }}</td>                                    
                                 <td>
                                     {# <input type="hidden" name="_token" value="{{ csrf_token('delete_commune' ~ commune.id) }}"> #}
-                                    <a class="btn btn-secondary" href={{path('app_delete_quartier', {'id': quartier.id})}}>Delete</a>
-                                    <a class="btn btn-danger" href={{path('app_edit_quartier', {'id': quartier.id})}}>Edit</a>
+                                    <a class="btn btn-danger" href={{path('app_delete_quartier', {'id': quartier.id})}}>Delete</a>
+                                    <a class="btn btn-secondary" href={{path('app_edit_quartier', {'id': quartier.id})}}>Edit</a>
                                 </td>                                    
                         </tr>
                     {% endfor %}

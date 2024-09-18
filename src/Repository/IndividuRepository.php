@@ -21,6 +21,15 @@ class IndividuRepository extends ServiceEntityRepository
         parent::__construct($registry, Individu::class);
     }
 
+    public function remove(Individu $entity, bool $flush = true):void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
 //    /**
 //     * @return Individu[] Returns an array of Individu objects
 //     */
